@@ -1,14 +1,15 @@
 from fastapi import FastAPI
 
 import pickle
-import lib
+import os
 import pandas as pd
 from schemas import PkRequest
 
 app = FastAPI(title='Legendary Pokemon Prediction API',
               description = 'This API allows you to predict if a Pokemon is Legendary or not based on their stats.')
-
-pickle_in = open("model.pkl","rb")
+PATH = os.getcwd()
+pickle_PATH = PATH+'\lib\model.pkl'
+pickle_in = open(pickle_PATH,"rb")
 
 model = pickle.load(pickle_in)
 
